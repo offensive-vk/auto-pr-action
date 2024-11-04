@@ -1,0 +1,56 @@
+name: "Auto PR Action"
+description: "Create a pull request with a ton of options and templates."
+author: "Vedansh (offensive-vk)"
+inputs:
+  labels:
+    description: "Comma-separated labels to apply"
+    required: false
+    default: ""
+  title:
+    description: "Title of the PR"
+    required: true
+  body_path:
+    description: "Path to markdown file for PR body"
+    required: false
+  reviewers:
+    description: "Comma-separated list of reviewers"
+    required: false
+    default: ""
+  assignees:
+    description: "Comma-separated list of assignees"
+    required: false
+    default: ""
+  milestone:
+    description: "Milestone number"
+    required: false
+  source_branch:
+    description: "Source branch"
+    required: true
+  destination_branch:
+    description: "Destination branch"
+    required: true
+  repo-token:
+    description: "GitHub token"
+    required: true
+  pr-allow-empty:
+    description: "Allow empty PR"
+    required: false
+    default: "false"
+  pr-draft:
+    description: "Create draft PR"
+    required: false
+    default: "false"
+  debug:
+    description: "Enable verbose debug logging"
+    required: false
+    default: "false"
+outputs:
+  pr_url:
+    description: "URL of the created PR"
+  pr_number:
+    description: "Number of the created PR"
+  pr_created:
+    description: "True if PR created successfully, false otherwise"
+runs:
+  using: "node20"
+  main: "dist/index.js"
