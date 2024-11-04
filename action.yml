@@ -1,6 +1,9 @@
 name: "Auto PR Action"
 description: "Create a pull request with a ton of options and templates."
 author: "Vedansh (offensive-vk)"
+branding:
+  icon: 'git-pull-request'
+  color: 'green'
 inputs:
   labels:
     description: "Comma-separated labels to apply"
