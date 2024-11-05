@@ -35,11 +35,11 @@ inputs:
   repo-token:
     description: "GitHub token"
     required: true
-  pr-allow-empty:
+  allow-empty:
     description: "Allow empty PR"
     required: false
     default: "false"
-  pr-draft:
+  draft:
     description: "Create draft PR"
     required: false
     default: "false"
@@ -54,6 +54,7 @@ outputs:
     description: "Number of the created PR"
   pr_created:
     description: "True if PR created successfully, false otherwise"
+
 runs:
   using: "node20"
   main: "dist/index.js"

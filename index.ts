@@ -20,14 +20,14 @@ async function run(): Promise<void> {
     const allowEmpty = core.getBooleanInput('pr-allow-empty');
     const draft = core.getBooleanInput('pr-draft');
     const debug = core.getBooleanInput('debug');
-
+    const body = core.getInput('body') || '';
     if (debug) core.info(`Inputs: ${JSON.stringify({ title, labels, reviewers, assignees, milestone, sourceBranch, destinationBranch, allowEmpty, draft })}`);
 
     // Read PR body from file if provided
-    let body = '';
+    let bodyContent = '';
     if (bodyPath) {
       try {
-        body = fs.readFileSync(bodyPath, 'utf8');
+        bodyContent = fs.readFileSync(bodyPath, 'utf8');
       } catch (error: any) {
         core.warning(`Could not read file at ${bodyPath}: ${error.message}`);
       }

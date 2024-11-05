@@ -1,0 +1,75 @@
+name: CI / Test
+
+on:
+  push:
+    branches-ignore:
+      - 'main'
+      - 'master'
+  workflow_dispatch:
+
+jobs:
+  create_pr:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' && github.event.pusher.name != 'dependabot[bot]' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create or Update Pull Request
+        id: create-pr
+        uses: ./
+        with:
+          repo-token: ${{ secrets.BOT_TOKEN }}
+          destination_branch: 'master'
+          title:
+            '${{ github.workflow }} - (${{ github.event.head_commit.message }})'
+          body: 'Please Wait.... Hamster is working really hard here.'
+          reviewer: 'offensive-vk'
+          label: 'hamster,pull-request'
+          assignee: 'TheHamsterBot'
+          draft: false
+
+      - name: Save PR Number in ENV
+        run:
+          echo "PR_NUMBER=${{ steps.create-pr.outputs.pr_number }}" >> $GITHUB_ENV;
+  update_pr:
+    name: Update PR Comment
+    needs: [create_pr]
+    if: ${{ github.actor != 'dependabot[bot]' && github.event.pusher.name != 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Pull Request Template
+        run: |
+          timestamp=$(date '+%b %d, %A %I:%M:%S %p')
+          markdown=$(cat <<EOF
+          ## This Pull Request Was Automated by [Hamster [bot]](https://github.com/TheHamsterBot)
+
+          > [!NOTE]
+          > Workflow Trigger: ${{ github.event_name }} event at ${{ github.event.pull_request.head_ref }}
+          > Details of Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          - Author: @TheHamsterBot
+          - Branch: master (base) / ${{ github.event.pull_request.head_ref }} (head)
+          - Commit: ${{ github.sha }}
+          - Workflow Path: ${{ github.workflow }}
+          - Pusher Details: ${{ github.event.pusher.name }} - ${{ github.event.pusher.email }}
+          - Most Recent Commit: ${{ github.event.head_commit.message }}
+
+          ---
+
+          Thanks.
+          $timestamp
+          Your Hamster 🐹 <code>PF78VAPPKLZ2</code>
+          EOF)
+          echo "$markdown" > .github/Auto_Pull_Request.md
+          echo "MARKDOWN_CONTENT<<EOF" >> $GITHUB_ENV
+          echo "$markdown" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Update Pull Request Body
+        run: |
+          gh pr edit "$PR_NUMBER" --body "$MARKDOWN_CONTENT"
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
