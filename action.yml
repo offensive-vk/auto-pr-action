@@ -12,8 +12,8 @@ inputs:
   title:
     description: "Title of the PR"
     required: true
-  body_path:
-    description: "Path to markdown file for PR body"
+  body:
+    description: "PR Body"
     required: false
   reviewers:
     description: "Comma-separated list of reviewers"

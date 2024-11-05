@@ -19,14 +19,14 @@ jobs:
         id: create-pr
         uses: ./
         with:
-          repo-token: ${{ secrets.BOT_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           destination_branch: 'master'
           title:
             '${{ github.workflow }} - (${{ github.event.head_commit.message }})'
           body: 'Please Wait.... Hamster is working really hard here.'
-          reviewer: 'offensive-vk'
-          label: 'hamster,pull-request'
-          assignee: 'TheHamsterBot'
+          reviewers: 'offensive-vk'
+          labels: 'hamster,pull-request'
+          assignees: 'TheHamsterBot'
           draft: false
 
       - name: Save PR Number in ENV

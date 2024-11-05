@@ -14,10 +14,10 @@ COPY . .
 
 RUN pnpm run bundle
 
-ENTRYPOINT ["node", "/dist/index.js"]
+ENTRYPOINT ["node", "dist/index.js"]
 
 LABEL \
-    "name"="TypeScript Action Starter" \
+    "name"="Auto PR Action" \
     "homepage"="https://github.com/marketplace/actions/auto-pr-action" \
     "repository"="https://github.com/offensive-vk/auto-pr-action" \
     "maintainer"="TheHamsterBot <TheHamsterBot@users.noreply.github.com>"
