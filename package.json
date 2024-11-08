@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "setup": "npm i -g pnpm@9.10.0 && pnpm -v",
-    "bundle": "esbuild index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap",
+    "build": "esbuild index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap",
     "coverage": "pnpx make-coverage-badge --output-path ./coverage.svg"
   },
   "license": "MIT",
