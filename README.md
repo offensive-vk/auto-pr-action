@@ -1,24 +1,6 @@
 # Auto PR Action
 
-`auto-pr-action` is a GitHub Action designed to simplify pull request creation across branches with customizable options. Ideal for automation workflows, this action allows you to create pull requests with dynamic properties like labels, reviewers, assignees, and more. Easily configure inputs and run the action within GitHub workflows, enhancing productivity in managing pull requests directly from your CI/CD pipeline.
-
-## Features
-
-- **Configurable PR Properties**: Define the PR title, body, labels, reviewers, assignees, and milestones.
-- **Branch Control**: Specify the source and destination branches for the pull request.
-- **Customizable PR Drafts**: Optionally create PRs as drafts.
-- **Supports Empty PRs**: Control whether PRs with no commits between branches are allowed.
-- **Debug Logging**: Enable verbose logging for easy debugging and monitoring.
-
-## Inputs
-
-| Input              | Description                                                | Required | Default |
-|--------------------|------------------------------------------------------------|----------|---------|
-| `labels`           | Comma-separated list of labels to apply to the PR.         | No       | `""`    |
-| `title`            | Title of the pull request.                                 | Yes      |         |
-| `body_path`        | Path to a markdown file for the PR body content.           | No       | `""`    |
-| `reviewers`        | Comma-separated list of reviewers.                         | No       | `""`    |
-| `assignees`        | Comma-separated list of assignees.                         | No       | `""`    |
+`auto-pr-action` is a GitHub Agdg                 | No       | `""`    |
 | `milestone`        | Milestone number to associate with the PR.                 | No       |         |
 | `source_branch`    | Branch from which to create the pull request.              | Yes      |         |
 | `destination_branch` | Branch into which to merge the pull request.             | Yes      |         |
