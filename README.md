@@ -16,15 +16,14 @@
 |--------------------|------------------------------------------------------------|----------|---------|
 | `labels`           | Comma-separated list of labels to apply to the PR.         | No       | `""`    |
 | `title`            | Title of the pull request.                                 | Yes      |         |
-| `body_path`        | Path to a markdown file for the PR body content.           | No       | `""`    |
 | `reviewers`        | Comma-separated list of reviewers.                         | No       | `""`    |
 | `assignees`        | Comma-separated list of assignees.                         | No       | `""`    |
 | `milestone`        | Milestone number to associate with the PR.                 | No       |         |
 | `source_branch`    | Branch from which to create the pull request.              | Yes      |         |
 | `destination_branch` | Branch into which to merge the pull request.             | Yes      |         |
 | `repo-token`       | GitHub token for authentication.                           | Yes      |         |
-| `pr-allow-empty`   | Allow pull requests with no commits. (`true` or `false`)   | No       | `false` |
-| `pr-draft`         | Create the pull request as a draft. (`true` or `false`)    | No       | `false` |
+| `allow-empty`   | Allow pull requests with no commits. (`true` or `false`)   | No       | `false` |
+| `draft`         | Create the pull request as a draft. (`true` or `false`)    | No       | `false` |
 | `debug`            | Enable verbose debug logging (`true` or `false`)           | No       | `false` |
 
 ## Outputs
@@ -54,7 +53,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create Pull Request
-        uses: offensive-vk/auto-pr-action@v5
+        uses: offensive-vk/auto-pr-action@v6
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           title: "Automated Pull Request"
@@ -62,8 +61,8 @@ jobs:
           destination_branch: "main"
           labels: "automation,enhancement"
           assignees: "vedansh"
-          pr-allow-empty: "false"
-          pr-draft: "false"
+          allow-empty: "false"
+          draft: "false"
           debug: "true"
 ```
 
@@ -80,3 +79,12 @@ Set `debug` to `true` for detailed logging output, which helps in identifying an
 ## License
 
 This project is licensed under the MIT License.
+
+***
+
+<p align="center">
+  <i>&copy; <a href="https://github.com/offensive-vk/">Vedansh </a> 2023 - Present</i><br>
+  <i>Licensed under <a href="https://github.com/offensive-vk/auto-pr-action/tree/master/LICENSE">MIT</a></i><br>
+  <a href="https://github.com/TheHamsterBot"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
+  <kbd>Thanks for visiting :)</kbd>
+</p>

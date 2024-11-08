@@ -1,3 +1,13 @@
+/******************************************************/
+/**
+ * @author Vedansh (offensive-vk)
+ * @url https://github.com/offensive-vk/auto-pr-action/
+ * @lang TypeScript + Node.js
+ * @type Github Action for Creating PRs.
+ * @uses Octokit and Actions Core
+ * @runs Nodejs v20.x
+ */
+/******************************************************/
 import * as core from '@actions/core';
 import * as github from '@actions/github';
 import * as fs from 'fs';
@@ -10,7 +20,7 @@ async function run(): Promise<void> {
     const ref = context.ref;
     const eventBranch = ref.replace(/^refs\/[^/]+\//, '');
 
-    const title = core.getInput('title') || 'Automated Pull Request';
+    const title = core.getInput('title') || 'Automated Pull Request using auto-pr-action';
     const bodyPath = core.getInput('body_path') || '';
     const labels = core.getInput('labels').split(',').map(label => label.trim()).filter(label => label);
     const reviewers = core.getInput('reviewers').split(',').map(reviewer => reviewer.trim()).filter(reviewer => reviewer);
@@ -68,11 +78,20 @@ async function run(): Promise<void> {
     if (milestone) await octokit.rest.issues.update({ owner, repo, issue_number: pr.data.number, milestone: Number(milestone) });
 
     core.info(`Pull request created: ${pr.data.html_url}`);
-    console.dir(pr, {depth: Infinity});
+    console.dir(pr, { depth: Infinity });
   } catch (error: any) {
-    core.setFailed(error.message);
+    core.error(error.message);
     core.error(`Something went wrong on our end, Sorry.`)
   }
 }
 
 run();
+/******************************************************/
+/**
+ * @author Vedansh (offensive-vk)
+ * @url https://github.com/offensive-vk/auto-pr-action/
+ * @lang TypeScript + Node.js
+ * @type Github Action for Creating PRs.
+ * @uses Octokit and Actions Core
+ */
+/******************************************************/

@@ -19713,11 +19713,11 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
       (0, command_1.issue)("echo", enabled ? "on" : "off");
     }
     exports2.setCommandEcho = setCommandEcho;
-    function setFailed2(message) {
+    function setFailed(message) {
       process.exitCode = ExitCode.Failure;
       error2(message);
     }
-    exports2.setFailed = setFailed2;
+    exports2.setFailed = setFailed;
     function isDebug() {
       return process.env["RUNNER_DEBUG"] === "1";
     }
@@ -23876,7 +23876,7 @@ async function run() {
     const context2 = github.context;
     const ref = context2.ref;
     const eventBranch = ref.replace(/^refs\/[^/]+\//, "");
-    const title = core.getInput("title") || "Automated Pull Request";
+    const title = core.getInput("title") || "Automated Pull Request using auto-pr-action";
     const bodyPath = core.getInput("body_path") || "";
     const labels = core.getInput("labels").split(",").map((label) => label.trim()).filter((label) => label);
     const reviewers = core.getInput("reviewers").split(",").map((reviewer) => reviewer.trim()).filter((reviewer) => reviewer);
@@ -23929,7 +23929,7 @@ async function run() {
     core.info(`Pull request created: ${pr.data.html_url}`);
     console.dir(pr, { depth: Infinity });
   } catch (error2) {
-    core.setFailed(error2.message);
+    core.error(error2.message);
     core.error(`Something went wrong on our end, Sorry.`);
   }
 }
