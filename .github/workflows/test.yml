@@ -19,7 +19,7 @@ jobs:
         id: create-pr
         uses: ./
         with:
-          source_branch: ${{ github.event.ref_name}}
+          source_branch: ${{ github.ref_name}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           destination_branch: 'master'
           title:
