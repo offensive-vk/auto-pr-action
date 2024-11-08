@@ -5,6 +5,7 @@
  * @lang TypeScript + Node.js
  * @type Github Action for Creating PRs.
  * @uses Octokit and Actions Core
+ * @runs Nodejs v20.x
  */
 /******************************************************/
 import * as core from '@actions/core';

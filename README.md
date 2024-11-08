@@ -79,3 +79,12 @@ Set `debug` to `true` for detailed logging output, which helps in identifying an
 ## License
 
 This project is licensed under the MIT License.
+
+***
+
+<p align="center">
+  <i>&copy; <a href="https://github.com/offensive-vk/">Vedansh </a> 2023 - Present</i><br>
+  <i>Licensed under <a href="https://github.com/offensive-vk/auto-pr-action/tree/master/LICENSE">MIT</a></i><br>
+  <a href="https://github.com/TheHamsterBot"><img src="https://i.ibb.co/4KtpYxb/octocat-clean-mini.png" /></a><br>
+  <kbd>Thanks for visiting :)</kbd>
+</p>
