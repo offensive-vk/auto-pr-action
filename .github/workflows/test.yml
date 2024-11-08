@@ -35,11 +35,9 @@ jobs:
           $timestamp
           Your Hamster 🐹 <code>PF78VAPPKLZ2</code>
           EOF)
-          echo "$markdown" > .github/Auto_Pull_Request.md
           echo "MARKDOWN_CONTENT<<EOF" >> $GITHUB_ENV
           echo "$markdown" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-          echo timestamp=$(date '+%b %d, %A %I:%M:%S %p') >> $GITHUB_ENV
 
   create_pr:
     name: Create Pull Request
