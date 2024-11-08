@@ -8,50 +8,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  template:
-    name: Generate Template
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate Pull Request Template
-        run: |
-          timestamp=$(date '+%b %d, %A %I:%M:%S %p')
-          markdown=$(cat <<EOF
-          ## This Pull Request Was Automated by [Hamster [bot]](https://github.com/TheHamsterBot)
-
-          > [!NOTE]
-          > Workflow Trigger: ${{ github.event_name }} event at ${{ github.event.pull_request.head_ref }}
-          > Details of Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-          - Author: @TheHamsterBot
-          - Branch: master (base) / ${{ github.event.pull_request.head_ref }} (head)
-          - Commit: ${{ github.sha }}
-          - Workflow Path: ${{ github.workflow }}
-          - Pusher Details: ${{ github.event.pusher.name }} - ${{ github.event.pusher.email }}
-          - Most Recent Commit: ${{ github.event.head_commit.message }}
-
-          ---
-
-          Thanks.
-          $timestamp
-          Your Hamster 🐹 <code>PF78VAPPKLZ2</code>
-          EOF)
-          echo "MARKDOWN_CONTENT<<EOF" >> $GITHUB_ENV
-          echo "$markdown" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
   create_pr:
     name: Create Pull Request
-    needs: [template]
     runs-on: ubuntu-latest
     if: github.actor != 'dependabot[bot]' && github.event.pusher.name != 'dependabot[bot]'
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create or Update Pull Request
+      - name: Create Pull Request
         id: create-pr
         uses: ./
         with:
-          source_branch: ${{ github.ref_name }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           destination_branch: 'master'
           title:
@@ -73,13 +40,8 @@ jobs:
             ---
 
             Thanks.
-            ${{ env.timestamp }}
             Your Hamster 🐹 <code>PF78VAPPKLZ2</code>
           reviewers: 'offensive-vk'
           labels: 'hamster,pull-request'
           assignees: 'TheHamsterBot'
           draft: false
-
-      - name: Save PR Number in ENV
-        run:
-          echo "PR_NUMBER=${{ steps.create-pr.outputs.pr_number }}" >> $GITHUB_ENV;
