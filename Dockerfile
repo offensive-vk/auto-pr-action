@@ -12,7 +12,7 @@ RUN pnpm i
 
 COPY . .
 
-RUN pnpm run bundle
+RUN pnpm run build
 
 ENTRYPOINT ["node", "dist/index.js"]
 
