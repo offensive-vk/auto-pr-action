@@ -15,10 +15,10 @@ async function run(): Promise<void> {
     const reviewers = core.getInput('reviewers').split(',').map(reviewer => reviewer.trim()).filter(reviewer => reviewer);
     const assignees = core.getInput('assignees').split(',').map(assignee => assignee.trim()).filter(assignee => assignee);
     const milestone = core.getInput('milestone');
-    const sourceBranch = core.getInput('source_branch', { required: true });
+    const sourceBranch = core.getInput('source_branch');
     const destinationBranch = core.getInput('destination_branch', { required: true });
-    const allowEmpty = core.getBooleanInput('pr-allow-empty');
-    const draft = core.getBooleanInput('pr-draft');
+    const allowEmpty = core.getBooleanInput('allow-empty');
+    const draft = core.getBooleanInput('draft');
     const debug = core.getBooleanInput('debug');
     const body = core.getInput('body') || '';
     if (debug) core.info(`Inputs: ${JSON.stringify({ title, labels, reviewers, assignees, milestone, sourceBranch, destinationBranch, allowEmpty, draft })}`);

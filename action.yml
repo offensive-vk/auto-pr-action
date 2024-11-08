@@ -28,7 +28,7 @@ inputs:
     required: false
   source_branch:
     description: "Source branch"
-    required: true
+    required: false
   destination_branch:
     description: "Destination branch"
     required: true
