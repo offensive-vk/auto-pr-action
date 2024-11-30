@@ -29,10 +29,10 @@
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
     "tsc": "^2.0.4",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@types/node": "^22.8.7",
+    "@types/node": "^22.10.1",
     "esbuild": "^0.24.0"
   }
 }
