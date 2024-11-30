@@ -1,5 +1,5 @@
-name: "Auto PR Action"
-description: "Create a pull request with a ton of options and templates."
+name: "Auto Pull Request Action"
+description: "Create a new pull request with a ton of options and templates."
 author: "Vedansh (offensive-vk)"
 branding:
   icon: 'git-pull-request'

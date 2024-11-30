@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create Pull Request
-        uses: offensive-vk/auto-pr-action@v6
+        uses: offensive-vk/auto-pr-action@v7
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           title: "Automated Pull Request"
