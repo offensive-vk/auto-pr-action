@@ -22,7 +22,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           destination_branch: 'master'
           title:
-            '${{ github.workflow }} - (${{ github.event.head_commit.message }})'
+            'Auto PR - (${{ github.event.head_commit.message }})'
           body: |
             ## This Pull Request Was Automated by [Hamster [bot]](https://github.com/TheHamsterBot)
 

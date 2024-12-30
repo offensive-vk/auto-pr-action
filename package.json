@@ -1,6 +1,6 @@
 {
   "name": "auto-pr-action",
-  "version": "5.0.0",
+  "version": "7.0.0",
   "author": "Vedansh",
   "private": true,
   "packageManager": "pnpm@9.10.0",
