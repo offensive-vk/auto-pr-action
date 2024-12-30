@@ -39,7 +39,7 @@
 Add this action to your GitHub workflow:
 
 ```yaml
-name: Auto PR Workflow
+name: Auto PR CI
 on:
   push:
     branches:
@@ -56,7 +56,7 @@ jobs:
         uses: offensive-vk/auto-pr-action@v7
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          title: "Automated Pull Request"
+          title: "Automated Pull Request - it works!"
           source_branch: "feature-branch"
           destination_branch: "main"
           labels: "automation,enhancement"

@@ -87,11 +87,3 @@ async function run(): Promise<void> {
 
 run();
 /******************************************************/
-/**
- * @author Vedansh (offensive-vk)
- * @url https://github.com/offensive-vk/auto-pr-action/
- * @lang TypeScript + Node.js
- * @type Github Action for Creating PRs.
- * @uses Octokit and Actions Core
- */
-/******************************************************/
