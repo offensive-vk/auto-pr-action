@@ -19,8 +19,8 @@
 | `reviewers`        | Comma-separated list of reviewers.                         | No       | `""`    |
 | `assignees`        | Comma-separated list of assignees.                         | No       | `""`    |
 | `milestone`        | Milestone number to associate with the PR.                 | No       |         |
-| `source_branch`    | Branch from which to create the pull request.              | Yes      |         |
-| `destination_branch` | Branch into which to merge the pull request.             | Yes      |         |
+| `source-branch`    | Branch from which to create the pull request.              | Yes      |         |
+| `destination-branch` | Branch into which to merge the pull request.             | Yes      |         |
 | `repo-token`       | GitHub token for authentication.                           | Yes      |         |
 | `allow-empty`   | Allow pull requests with no commits. (`true` or `false`)   | No       | `false` |
 | `draft`         | Create the pull request as a draft. (`true` or `false`)    | No       | `false` |
@@ -53,7 +53,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create Pull Request
-        uses: offensive-vk/auto-pr-action@v7
+        uses: offensive-vk/auto-pr-action@v8
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           title: "Automated Pull Request - it works!"

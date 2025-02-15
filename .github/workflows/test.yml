@@ -20,9 +20,9 @@ jobs:
         uses: ./
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          destination_branch: 'master'
+          destination-branch: 'master'
           title:
-            'Auto PR - (${{ github.event.head_commit.message }})'
+            '✅ Automated PR - (${{ github.event.head_commit.message }})'
           body: |
             ## This Pull Request Was Automated by [Hamster [bot]](https://github.com/TheHamsterBot)
 
@@ -42,6 +42,6 @@ jobs:
             Thanks.
             Your Hamster 🐹 <code>PF78VAPPKLZ2</code>
           reviewers: 'offensive-vk'
-          labels: 'hamster,pull-request'
+          labels: 'hamster,test'
           assignees: 'TheHamsterBot'
           draft: false
