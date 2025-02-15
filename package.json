@@ -1,9 +1,8 @@
 {
   "name": "auto-pr-action",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "author": "Vedansh",
   "private": true,
-  "packageManager": "pnpm@9.10.0",
   "homepage": "https://github.com/offensive-vk/auto-pr-actions",
   "repository": {
     "type": "git",
@@ -20,7 +19,6 @@
     "automated"
   ],
   "scripts": {
-    "setup": "npm i -g pnpm@9.10.0 && pnpm -v",
     "build": "esbuild index.ts --bundle --outfile=dist/index.js --platform=node --sourcemap",
     "coverage": "pnpx make-coverage-badge --output-path ./coverage.svg"
   },
@@ -33,6 +31,6 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
-    "esbuild": "^0.24.0"
+    "esbuild": "^0.25.0"
   }
 }

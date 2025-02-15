@@ -26,12 +26,12 @@ async function run(): Promise<void> {
     const reviewers = core.getInput('reviewers').split(',').map(reviewer => reviewer.trim()).filter(reviewer => reviewer);
     const assignees = core.getInput('assignees').split(',').map(assignee => assignee.trim()).filter(assignee => assignee);
     const milestone = core.getInput('milestone');
-    const sourceBranch = core.getInput('source_branch') || eventBranch;
-    const destinationBranch = core.getInput('destination_branch', { required: true });
+    const sourceBranch = core.getInput('source-branch') || eventBranch;
+    const destinationBranch = core.getInput('destination-branch', { required: true });
     const allowEmpty = core.getBooleanInput('allow-empty');
     const draft = core.getBooleanInput('draft');
     const debug = core.getBooleanInput('debug');
-    const body = core.getInput('body') || 'This was probably automated lol.';
+    const body = core.getInput('body') || 'This was probably automated.';
     if (debug) core.info(`Inputs: ${JSON.stringify({ title, labels, body, reviewers, assignees, milestone, sourceBranch, destinationBranch, allowEmpty, draft })}`);
 
     let bodyContent = '';
@@ -77,8 +77,7 @@ async function run(): Promise<void> {
     if (reviewers.length > 0) await octokit.rest.pulls.requestReviewers({ owner, repo, pull_number: pr.data.number, reviewers });
     if (milestone) await octokit.rest.issues.update({ owner, repo, issue_number: pr.data.number, milestone: Number(milestone) });
 
-    core.info(`Pull request created: ${pr.data.html_url}`);
-    console.dir(pr, { depth: Infinity });
+    core.info(`Hurray ! Pull request created => ${pr.data.html_url}`);
   } catch (error: any) {
     core.error(error.message);
     core.error(`Something went wrong on our end, Sorry.`)

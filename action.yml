@@ -26,15 +26,16 @@ inputs:
   milestone:
     description: "Milestone number"
     required: false
-  source_branch:
+  source-branch:
     description: "Source branch"
     required: false
-  destination_branch:
+  destination-branch:
     description: "Destination branch"
     required: true
   repo-token:
-    description: "GitHub token"
+    description: "GitHub token to Create PR."
     required: true
+    default: ${{ github.token }}
   allow-empty:
     description: "Allow empty PR"
     required: false
